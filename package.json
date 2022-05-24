@@ -4,7 +4,6 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-
         "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest",
         "start": "node ./lib/server.js"
     },
@@ -14,6 +13,7 @@
         "jest": "^28.1.0"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.18.1"
     }
 }
