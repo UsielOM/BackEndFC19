@@ -1,17 +1,17 @@
 {
-  "name": "backendfc19",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "UsielOM",
-  "license": "ISC",
-  "devDependencies": {
-    "jest": "^28.1.0"
-  },
-  "dependencies": {
-    "express": "^4.18.1"
-  }
+    "name": "backendfc19",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest"
+    },
+    "author": "UsielOM",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^28.1.0"
+    },
+    "dependencies": {
+        "express": "^4.18.1"
+    }
 }
