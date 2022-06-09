@@ -8,10 +8,10 @@ module.exports = function(app, sql) {
         });
     });
 
-    app.post("/registrar", function(request, response) {
+    // app.post("/registrar", function(request, response) {
 
-        sql.createRegistro(request.body, function(result) {
-            response.send(result);
-        });
-    });
+    //     sql.createRegistro(request.body, function(result) {
+    //         response.send(result);
+    //     });
+    // });
 }
