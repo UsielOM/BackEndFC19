@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const crypto = require('crypto');
 
 const sequelize = new Sequelize("bfcv19", "root", "sasa", {
     host: "localhost",
@@ -41,22 +42,29 @@ createRegistro = function(request, callback) {
     }).then(callback(true));
 };
 
-addUser = function(user, callback) {
-    Usersregister.create({
-        Nombre: user.Nombre,
-        Apellido_paterno: user.Apellido_paterno,
-        Apellido_materno: user.Apellido_materno,
-        CURP: user.CURP,
-        Fecha_nacimiento: user.Fecha_nacimiento,
-        Sexo: user.Sexo,
-        Email: user.Email,
-        password: user.password,
-        tipeu: user.tipeu, //tu
-        salt: user.salt
-    }).then(callback(true));
-}
 
+
+login = function(request, callback) {
+    Registro.findOne({
+        where: {
+            Email: request.Email
+
+        }
+    }).then(function(user) {
+        if (user !== null) {
+            var passwordHash = crypto.pbkdf2Sync(request.Password, user.Cpassword, 1000, 64, "sha512")
+                .toString("hex");
+
+            if (passwordHash === user.Password) {
+                callback(true);
+                return;
+            }
+        }
+        callback(false);
+    });
+}
 
 module.exports.getRegistros = getRegistros;
 module.exports.createRegistro = createRegistro;
 module.exports.init = init;
+module.exports.login = login;
