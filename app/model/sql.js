@@ -20,7 +20,7 @@ const Registro = sequelize.define('registros', {
 
 init = function() {
     sequelize.authenticate().then(() => {
-        console.log("Conexión establecida correctamente.");
+        console.log("Conexión establecida exitosamente.");
     }).catch(err => {
         console.error("conexión no establecida: ", err);
     });
