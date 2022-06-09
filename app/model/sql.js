@@ -42,8 +42,6 @@ createRegistro = function(request, callback) {
     }).then(callback(true));
 };
 
-
-
 login = function(request, callback) {
     Registro.findOne({
         where: {
