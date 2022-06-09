@@ -1,5 +1,6 @@
 module.exports = function(app, sql) {
     const crypto = require('crypto');
+    const jwtUtil = require('./jwtUtil');
 
     //Metodo registar con encriptacion 
     app.post("/registrar", function(request, response) {
@@ -21,7 +22,13 @@ module.exports = function(app, sql) {
         const Password = request.body.Password;
 
         sql.login({ Email, Password }, result => {
-            response.send(result);
+            if (!result) {
+                response.send(401);
+
+            } else {
+                var token = jwtUtil.signJwt(Email);
+                response.send({ token });
+            }
         });
     });
 };
