@@ -1,7 +1,7 @@
 module.exports = function(app, sql) {
     const crypto = require('crypto');
 
-
+    //Metodo registar con encriptacion 
     app.post("/registrar", function(request, response) {
         request.body.Cpassword = crypto.randomBytes(16).toString("hex");
 
@@ -10,6 +10,17 @@ module.exports = function(app, sql) {
 
         request.body.Password = passwordHash;
         sql.createRegistro(request.body, function(result) {
+            response.send(result);
+        });
+    });
+
+    //Metodo Login
+
+    app.post("/login", function(request, response) {
+        const Email = request.body.Email;
+        const Password = request.body.Password;
+
+        sql.login({ Email, Password }, result => {
             response.send(result);
         });
     });
