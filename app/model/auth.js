@@ -28,7 +28,13 @@ module.exports = function(app, sql) {
             } else {
                 var token = jwtUtil.signJwt(Email);
                 response.send({ token });
+
             }
         });
+
     });
+    app.post("/user/auth", function(request, response) {
+        var valid = jwtUtil.verifyJwt(request.body.token);
+        response.send(valid != false);
+    })
 };
