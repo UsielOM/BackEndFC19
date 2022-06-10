@@ -42,6 +42,16 @@ createRegistro = function(request, callback) {
     }).then(callback(true));
 };
 
+
+getUsuario = function(request, callback) {
+    Registro.findOne({
+        where: {
+            Email: request.Email
+        }
+    }).then(registro => callback(registro));
+}
+
+
 login = function(request, callback) {
     Registro.findOne({
         where: {
@@ -66,3 +76,4 @@ module.exports.getRegistros = getRegistros;
 module.exports.createRegistro = createRegistro;
 module.exports.init = init;
 module.exports.login = login;
+module.exports.getUsuario = getUsuario;

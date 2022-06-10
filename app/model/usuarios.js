@@ -9,4 +9,11 @@ module.exports = function(app, sql) {
     });
 
 
+    app.get("/user/:Email", function(request, response) {
+        sql.getUsuario({ Email: request.params.Email }, function(registro) {
+            response.send(registro);
+        })
+    })
+
+
 }
