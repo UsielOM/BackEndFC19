@@ -24,7 +24,7 @@ init = function() {
     }).catch(err => {
         console.error("conexión no establecida: ", err);
     });
-    // Registro.sync();
+    // Registro.sync()
 };
 
 getRegistros = function(callback) {
