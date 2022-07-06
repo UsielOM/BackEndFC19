@@ -6,7 +6,6 @@
     "scripts": {
         "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest",
         "start": "nodemon ./lib/server.js"
-
     },
     "author": "UsielOM",
     "license": "ISC",
@@ -22,6 +21,7 @@
         "mysql2": "^2.3.3",
         "node": "^17.7.2",
         "nodemon": "^2.0.16",
-        "sequelize": "^6.20.0"
+        "sequelize": "^6.20.0",
+        "serialport": "^10.4.0"
     }
 }
