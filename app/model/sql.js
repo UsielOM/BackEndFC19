@@ -46,7 +46,8 @@ createRegistro = function(request, callback) {
 getUsuario = function(request, callback) {
     Registro.findOne({
         where: {
-            Email: request.Email
+            Email: request.Email,
+            
         }
     }).then(registro => callback(registro));
 }
