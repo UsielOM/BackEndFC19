@@ -10,6 +10,8 @@ module.exports = function(app, sql) {
     });
 
 
+
+
     app.get("/user/:Email", isAuthenticated, function(request, response) {
 
         sql.getUsuario({ Email: request.params.Email }, function(registro) {
