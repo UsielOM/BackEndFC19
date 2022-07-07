@@ -1,15 +1,17 @@
-const SerialPort = require('serialport');
+const { SerialPort } = require('serialport')
 module.exports = function() {
-    const port = new SerialPort('COM6', {
-        baudRate: 9600
-    });
 
-    const parser = new SerialPort.parsers.Readline();
+    const port = new SerialPort({ path: 'COM6', baudRate: 9600 })
 
-    port.pipe(parser);
+    port.write('main screen turn on', function(err) {
+        if (err) {
+            return console.log('Error on write: ', err.message)
+        }
+        console.log('message written')
+    })
 
-    parser.on('data', (line) => {
-        console.log(`El arduino dice: ${line}`);
-        port.write('Tu mensaje si llego');
+    // Open errors will be emitted as an error event
+    port.on('error', function(err) {
+        console.log('Error: ', err.message)
     })
 }
