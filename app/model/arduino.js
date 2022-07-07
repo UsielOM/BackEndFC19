@@ -1,6 +1,6 @@
 const SerialPort = require('serialport');
 module.exports = function() {
-    const port = new SerialPort('COM5', {
+    const port = new SerialPort('COM6', {
         baudRate: 9600
     });
 
