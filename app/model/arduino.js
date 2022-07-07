@@ -1,14 +1,15 @@
-const serialPort = require('serialport');
+const SerialPort = require('serialport');
 module.exports = function() {
-    const port = new serialPort('COM5', { baudRate: 9600 });
+    const port = new SerialPort('COM5', {
+        baudRate: 9600
+    });
 
-    const parser = new serialPort.parser.Readline();
+    const parser = new SerialPort.parsers.Readline();
 
     port.pipe(parser);
 
     parser.on('data', (line) => {
-        console.log("El arduino dice: ", line);
-        port.write('Era una vez');
-    });
-
+        console.log(`El arduino dice: ${line}`);
+        port.write('Tu mensaje si llego');
+    })
 }
