@@ -1,20 +1,13 @@
-const { SerialPort } = require('serialport');
-const ReadlineParser = require('@serialport/parser-readline')
-
+const SerialPort = require('serialport');
 module.exports = function() {
 
-    const port = new SerialPort({ path: 'COM6', baudRate: 9600, parser: ReadlineParser });
-    // const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
-    // port.on('open', function() {
-    //     console.log('Conecion establecida correctamente');
+    const port = new SerialPort({
+        path: 'COM5',
+        baudRate: 2000000
 
-    // });
-
+    })
     port.on('data', function(data) {
-            console.log('Data:', data);
-            // port.write(`Arduino dice:  ${data}`);
-        })
-        // const lineStream = port.pipe(new ReadlineParser())
-
-
+        console.log(`El arduino dice: ${data}`)
+        port.write(Buffer.from('Soy un: '))
+    });
 }
